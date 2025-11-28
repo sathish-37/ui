@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA BIOTEC</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #ecfdf5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 130px;
+        }
+        
+        /* Top Navbar */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .navbar-logo-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.4), 0 6px 20px rgba(16, 185, 129, 0.3);
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.4), 0 6px 20px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(16, 185, 129, 0.8), 0 0 80px rgba(16, 185, 129, 0.6), 0 8px 25px rgba(16, 185, 129, 0.4);
+            }
+        }
+        
+        .navbar-logo-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .navbar-brand-name {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        .social-instagram {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            box-shadow: 0 0 20px rgba(240, 148, 51, 0.5), 0 4px 15px rgba(240, 148, 51, 0.3);
+        }
+        
+        .social-instagram:hover {
+            box-shadow: 0 0 30px rgba(240, 148, 51, 0.7), 0 6px 25px rgba(240, 148, 51, 0.5);
+        }
+        
+        .social-facebook {
+            background: #1877f2;
+            color: white;
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.5), 0 4px 15px rgba(24, 119, 242, 0.3);
+        }
+        
+        .social-facebook:hover {
+            box-shadow: 0 0 30px rgba(24, 119, 242, 0.7), 0 6px 25px rgba(24, 119, 242, 0.5);
+        }
+        
+        .social-twitter {
+            background: #1da1f2;
+            color: white;
+            box-shadow: 0 0 20px rgba(29, 161, 242, 0.5), 0 4px 15px rgba(29, 161, 242, 0.3);
+        }
+        
+        .social-twitter:hover {
+            box-shadow: 0 0 30px rgba(29, 161, 242, 0.7), 0 6px 25px rgba(29, 161, 242, 0.5);
+        }
+        
+        .social-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5), 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .social-whatsapp:hover {
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.7), 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Scrolling Address Banner */
+        .address-banner {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            height: 50px;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .address-content {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            white-space: nowrap;
+            animation: scrollText 30s linear infinite;
+        }
+        
+        .address-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 60px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .address-item i {
+            font-size: 18px;
+            color: #d1fae5;
+        }
+        
+        .address-separator {
+            color: #d1fae5;
+            font-size: 20px;
+            margin: 0 20px;
+        }
+        
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.6), 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: floatPulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(37, 211, 102, 0.8), 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        .whatsapp-float i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        @keyframes floatPulse {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Stats Section */
+        .stats-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 25px 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 50px 60px 30px;
+            margin-top: 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #10b981;
+        }
+        
+        .footer-section p, .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: #10b981;
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a i {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        .footer-bottom strong {
+            color: #10b981;
+        }
+        
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Left Side - Form */
+        .form-section {
+            width: 50%;
+            padding: 40px 50px;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            width: 20px;
+            height: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .logo-icon i {
+            font-size: 25px;
+            color: white;
+        }
+        
+        .brand-title {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        
+        .brand-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 2px solid #f0fdf4;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .form-card:hover {
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+            border-color: #d1fae5;
+            transform: translateY(-3px);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        .form-label i {
+            color: #10b981;
+            margin-right: 6px;
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .form-control:hover, .form-select:hover {
+            border-color: #10b981;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+        }
+        
+        textarea.form-control {
+            min-height: 70px;
+            resize: vertical;
+        }
+        
+         .form-control-static {
+            padding: 10px 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            color: #1f2937;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #e5e7eb;
+        } 
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        
+        /* Right Side - Images */
+        .image-section {
+            width: 50%;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .carousel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        
+        .carousel-bg .carousel-item {
+            height: 100vh;
+        }
+        
+        .carousel-bg .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            display: none;
+        }
+        
+        .image-content h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .image-content p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        .feature-list li i {
+            background: rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        
+        .product-showcase {
+            position: relative;
+            z-index: 2;
+            display: none;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .product-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        @media (max-width: 992px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .form-section, .image-section {
+                width: 100%;
+            }
+            
+            .image-section {
+                position: relative;
+                height: auto;
+                min-height: 500px;
+            }
+        }
+        
+        /* Scrollbar Styling */
+        .form-section::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .form-section::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        .form-section::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="top-navbar">
+        <div class="navbar-logo">
+            <div class="navbar-logo-icon">
+                <i class="bi bi-flower1"></i>
+            </div>
+            <h1 class="navbar-brand-name">AURA BIOTECH</h1>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-instagram" title="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-facebook" title="Facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-twitter" title="Twitter">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://wa.me/1234567890" target="_blank" class="social-whatsapp" title="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Scrolling Address Banner -->
+    <div class="address-banner">
+        <div class="address-content">
+            <div class="address-item">
+                <i class="bi bi-building"></i>
+                <span>Aura Biotechnologies Private Limited</span>
+            </div>
+            <span class="address-separator">•</span>
+            <div class="address-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Plot No. B4, SIPCOT Industrial Complex, Manamadurai, Sivagangai District, Tamil Nadu</span>
+            </div>
+            <span class="address-separator">•</span>
+            <div class="address-item">
+                <i class="bi bi-telephone-fill"></i>
+                <span>+91 80567 38421</span>
+            </div>
+            <span class="address-separator">•</span>
+            <div class="address-item">
+                <i class="bi bi-envelope-fill"></i>
+                <span>info@aurabiotic.com</span>
+            </div>
+            <span class="address-separator">•</span>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Left Side - Form Section -->
+        <div class="form-section">
+            <!-- Form Start -->
+            <form action="submit_product.php" method="POST" enctype="multipart/form-data">
+                
+                <!-- UIN (GTIN) -->
+   <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-upc-scan"></i> UIN (GTIN) :
+        </label>
+        <div class="form-control-static">U74900TN2014PTC096930</div>
+    </div>
+
+    <!-- Batch Number -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-box-seam"></i> Batch Number :
+        </label>
+        <div class="form-control-static">ABPLEBZ05</div>
+    </div>
+
+    <!-- Date of Manufacturing -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-calendar-check"></i> Date of Manufacturing :
+        </label>
+        <div class="form-control-static">29-09-2025</div>
+    </div>
+
+    <!-- Date of Expiry -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-calendar-x"></i> Date of Expiry :
+        </label>
+        <div class="form-control-static">28-09-2027</div>
+    </div>
+
+    <!-- Product Name -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-award"></i> Product Name :
+        </label>
+        <div class="form-control-static">Emamectin Benzoate 5% SG</div>
+    </div>
+
+    <!-- CIB & RC -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-shield-check"></i> CIB & RC :
+        </label>
+        <div class="form-control-static">CIR-186237/2021-Emamectin Benzoate (SG) (429)-2219</div>
+    </div>
+
+    <!-- Customer Care -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-telephone"></i> Customer Care :
+        </label>
+        <div class="form-control-static">📞 +91 8056738421, 📧 info@aurabiotech.com</div>
+    </div>
+
+    <!-- Brand Name -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-patch-check"></i> Brand Name :
+        </label>
+        <div class="form-control-static">AURACLAIM</div>
+    </div>
+
+    <!-- Antidote Statement -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-heart-pulse"></i> Antidote Statement :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Marketed By -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-building"></i> Marketed By :
+        </label>
+        <div class="form-control-static">Aura Biotechnologies Private Limited</div>
+    </div>
+
+    <!-- Manufactured By -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-gear"></i> Manufactured By :
+        </label>
+        <div class="form-control-static">Aura Biotechnologies Private Limited</div>
+    </div>
+
+    <!-- Chemical Composition -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-cup-straw"></i> Chemical Composition :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Direction of Use -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-list-check"></i> Direction of Use :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Warning Statement -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-exclamation-triangle"></i> Warning Statement :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-star"></i> Recommendations :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Standard Instructions -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-file-text"></i> Standard Instructions :
+        </label>
+        <div class="form-control-static">Read the enclosed leaflet</div>
+    </div>
+
+    <!-- Net Weight -->
+    <div class="form-card" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+        <label class="form-label" style="font-weight:bold; min-width:220px;">
+            <i class="bi bi-box"></i> Net Weight :
+        </label>
+        <div class="form-control-static">500g</div>
+    </div>
+
+                <!-- Product Image Upload -->
+                <div class="form-card">
+                    <label class="form-label">
+                        <i class="bi bi-image"></i> Product Image
+                    </label>
+                    <input type="file" class="form-control" name="product_image" accept="image/*">
+                    <small class="text-muted">Upload product image (JPG, PNG, max 5MB)</small>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-submit mt-4">
+                    <i class="bi bi-qr-code me-2"></i> Generate QR Code
+                </button>
+                
+            </form>
+        </div>
+        
+        <!-- Right Side - Image Section -->
+        <div class="image-section">
+            <!-- Carousel Background -->
+            <div id="agriCarousel" class="carousel slide carousel-bg carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1200&q=80" alt="Farmer spraying pesticide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200&q=80" alt="Agriculture products">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=1200&q=80" alt="Healthy crops">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200&q=80" alt="Farming field">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80" alt="Green agriculture">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Overlay -->
+            <div class="stats-overlay">
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Farmers Trust Us</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">250+</span>
+                    <span class="stat-label">Products</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Aura Biotechnologies</h3>
+                <p>Leading manufacturer and supplier of premium quality agricultural solutions. We are committed to empowering farmers with innovative and eco-friendly products for sustainable farming.</p>
+                <p><i class="bi bi-award-fill"></i> ISO Certified | Government Approved</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#products">Our Products</a>
+                <a href="#about">About Us</a>
+                <a href="#quality">Quality Standards</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>External Links</h3>
+                <a href="https://agricoop.nic.in" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Ministry of Agriculture</a>
+                <a href="https://www.cibrc.nic.in" target="_blank"><i class="bi bi-box-arrow-up-right"></i> CIB & RC Official</a>
+                <a href="https://www.apeda.gov.in" target="_blank"><i class="bi bi-box-arrow-up-right"></i> APEDA</a>
+                <a href="https://sipcot.tn.gov.in" target="_blank"><i class="bi bi-box-arrow-up-right"></i> SIPCOT TN</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="bi bi-geo-alt-fill"></i> Plot No. B4, SIPCOT Industrial Complex<br>Manamadurai, Sivagangai District<br>Tamil Nadu, India</p>
+                <p><i class="bi bi-telephone-fill"></i> +91 80567 38421</p>
+                <p><i class="bi bi-envelope-fill"></i> info@aurabiotic.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 <strong>Aura Biotechnologies Private Limited</strong>. All Rights Reserved. | Designed with <i class="bi bi-heart-fill" style="color: #ef4444;"></i> for Farmers</p>
+        </div>
+    </footer>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918056738421?text=Hello%20Aura%20Biotechnologies" target="_blank" class="whatsapp-float">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
